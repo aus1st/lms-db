@@ -1,0 +1,463 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "id": "13963762-3ff6-46ea-b8fd-d310c65f00d2",
+  "prevId": "9d67c18d-de93-4739-b22b-04a1eb72865b",
+  "tables": {
+    "centers": {
+      "name": "centers",
+      "schema": "",
+      "columns": {
+        "center_id": {
+          "name": "center_id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "center_name": {
+          "name": "center_name",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "campus": {
+          "name": "campus",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "location": {
+          "name": "location",
+          "type": "varchar(300)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_date": {
+          "name": "created_date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {}
+    },
+    "cities": {
+      "name": "cities",
+      "schema": "",
+      "columns": {
+        "city_id": {
+          "name": "city_id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "city_name": {
+          "name": "city_name",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_date": {
+          "name": "created_date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {}
+    },
+    "reg_students": {
+      "name": "reg_students",
+      "schema": "",
+      "columns": {
+        "student_id": {
+          "name": "student_id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "full_name": {
+          "name": "full_name",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "dob": {
+          "name": "dob",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "gender": {
+          "name": "gender",
+          "type": "varchar(10)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "contact_no": {
+          "name": "contact_no",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "last_qualification": {
+          "name": "last_qualification",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "home_address": {
+          "name": "home_address",
+          "type": "varchar(500)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "image_url": {
+          "name": "image_url",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "city_id": {
+          "name": "city_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "distance_learning": {
+          "name": "distance_learning",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "roll_internal": {
+          "name": "roll_internal",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "roll_no": {
+          "name": "roll_no",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "status": {
+          "name": "status",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "reject_reason": {
+          "name": "reject_reason",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "signup_date": {
+          "name": "signup_date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "entry_test_result": {
+          "name": "entry_test_result",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "student_ref_id": {
+          "name": "student_ref_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "percentile": {
+          "name": "percentile",
+          "type": "numeric(3)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rank": {
+          "name": "rank",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "on_site_allowed": {
+          "name": "on_site_allowed",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_new_user": {
+          "name": "is_new_user",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "have_laptop": {
+          "name": "have_laptop",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_profile_completed": {
+          "name": "is_profile_completed",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "phone_verification_token": {
+          "name": "phone_verification_token",
+          "type": "varchar(2000)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "phone_verified": {
+          "name": "phone_verified",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_document_uploaded": {
+          "name": "is_document_uploaded",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_date": {
+          "name": "created_date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_date": {
+          "name": "updated_date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "update_by": {
+          "name": "update_by",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "reg_students_user_id_users_user_id_fk": {
+          "name": "reg_students_user_id_users_user_id_fk",
+          "tableFrom": "reg_students",
+          "tableTo": "users",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "user_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "reg_students_city_id_cities_city_id_fk": {
+          "name": "reg_students_city_id_cities_city_id_fk",
+          "tableFrom": "reg_students",
+          "tableTo": "cities",
+          "columnsFrom": [
+            "city_id"
+          ],
+          "columnsTo": [
+            "city_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {}
+    },
+    "roles": {
+      "name": "roles",
+      "schema": "",
+      "columns": {
+        "role_id": {
+          "name": "role_id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "role_name": {
+          "name": "role_name",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_date": {
+          "name": "created_date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {}
+    },
+    "student_documents": {
+      "name": "student_documents",
+      "schema": "",
+      "columns": {
+        "st_doc_id": {
+          "name": "st_doc_id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "document_name": {
+          "name": "document_name",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "document_url": {
+          "name": "document_url",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {}
+    },
+    "users": {
+      "name": "users",
+      "schema": "",
+      "columns": {
+        "user_id": {
+          "name": "user_id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "user_name": {
+          "name": "user_name",
+          "type": "varchar(500)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cnic": {
+          "name": "cnic",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "password": {
+          "name": "password",
+          "type": "varchar(3000)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "email_verification_token": {
+          "name": "email_verification_token",
+          "type": "varchar(3000)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "email_verfied": {
+          "name": "email_verfied",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_active": {
+          "name": "is_active",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "role_id": {
+          "name": "role_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "status": {
+          "name": "status",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_blocked": {
+          "name": "is_blocked",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "block_reason": {
+          "name": "block_reason",
+          "type": "varchar(1000)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_date": {
+          "name": "created_date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_date": {
+          "name": "updated_date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "update_by": {
+          "name": "update_by",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "users_role_id_roles_role_id_fk": {
+          "name": "users_role_id_roles_role_id_fk",
+          "tableFrom": "users",
+          "tableTo": "roles",
+          "columnsFrom": [
+            "role_id"
+          ],
+          "columnsTo": [
+            "role_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  }
+}

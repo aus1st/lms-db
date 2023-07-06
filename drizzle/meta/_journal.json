@@ -22,6 +22,20 @@
       "when": 1688644890498,
       "tag": "0002_hot_trish_tilby",
       "breakpoints": false
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1688670565320,
+      "tag": "0003_neat_bloodstorm",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1688673844838,
+      "tag": "0004_aberrant_yellowjacket",
+      "breakpoints": true
     }
   ]
 }
