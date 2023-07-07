@@ -1,0 +1,1367 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "id": "29496c85-3b76-4e5e-9b02-638afdfed86c",
+  "prevId": "da0afee1-aecd-4195-8ae9-5a1e522bd02e",
+  "tables": {
+    "batchConfig": {
+      "name": "batchConfig",
+      "schema": "",
+      "columns": {
+        "batchConfigId": {
+          "name": "batchConfigId",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "batchId": {
+          "name": "batchId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "instructionsForMale": {
+          "name": "instructionsForMale",
+          "type": "text[]",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "instructionsForFemale": {
+          "name": "instructionsForFemale",
+          "type": "text[]",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "admitCardMessage": {
+          "name": "admitCardMessage",
+          "type": "varchar(1000)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "attestationDate": {
+          "name": "attestationDate",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "entryTestDate": {
+          "name": "entryTestDate",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "createdOn": {
+          "name": "createdOn",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "batchConfig_batchId_batches_batchId_fk": {
+          "name": "batchConfig_batchId_batches_batchId_fk",
+          "tableFrom": "batchConfig",
+          "tableTo": "batches",
+          "columnsFrom": [
+            "batchId"
+          ],
+          "columnsTo": [
+            "batchId"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {}
+    },
+    "batchCourses": {
+      "name": "batchCourses",
+      "schema": "",
+      "columns": {
+        "batchCourseId": {
+          "name": "batchCourseId",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "batchId": {
+          "name": "batchId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "courseId": {
+          "name": "courseId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "batchCourses_batchId_batches_batchId_fk": {
+          "name": "batchCourses_batchId_batches_batchId_fk",
+          "tableFrom": "batchCourses",
+          "tableTo": "batches",
+          "columnsFrom": [
+            "batchId"
+          ],
+          "columnsTo": [
+            "batchId"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "batchCourses_courseId_courses_course_id_fk": {
+          "name": "batchCourses_courseId_courses_course_id_fk",
+          "tableFrom": "batchCourses",
+          "tableTo": "courses",
+          "columnsFrom": [
+            "courseId"
+          ],
+          "columnsTo": [
+            "course_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {}
+    },
+    "batchQuarters": {
+      "name": "batchQuarters",
+      "schema": "",
+      "columns": {
+        "batchQuarterId": {
+          "name": "batchQuarterId",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "quarterId": {
+          "name": "quarterId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "batchCourseId": {
+          "name": "batchCourseId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "isClassStarted": {
+          "name": "isClassStarted",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "isRegistrationActive": {
+          "name": "isRegistrationActive",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "isClassCompleted": {
+          "name": "isClassCompleted",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "isActive": {
+          "name": "isActive",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "regStartDate": {
+          "name": "regStartDate",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "regEndDate": {
+          "name": "regEndDate",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "classStartDate": {
+          "name": "classStartDate",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "classEndDate": {
+          "name": "classEndDate",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "createdOn": {
+          "name": "createdOn",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "batchQuarters_quarterId_quarters_quarterId_fk": {
+          "name": "batchQuarters_quarterId_quarters_quarterId_fk",
+          "tableFrom": "batchQuarters",
+          "tableTo": "quarters",
+          "columnsFrom": [
+            "quarterId"
+          ],
+          "columnsTo": [
+            "quarterId"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "batchQuarters_batchCourseId_batchCourses_batchCourseId_fk": {
+          "name": "batchQuarters_batchCourseId_batchCourses_batchCourseId_fk",
+          "tableFrom": "batchQuarters",
+          "tableTo": "batchCourses",
+          "columnsFrom": [
+            "batchCourseId"
+          ],
+          "columnsTo": [
+            "batchCourseId"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {}
+    },
+    "batches": {
+      "name": "batches",
+      "schema": "",
+      "columns": {
+        "batchId": {
+          "name": "batchId",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "batchName": {
+          "name": "batchName",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "isRegistrationActive": {
+          "name": "isRegistrationActive",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cityId": {
+          "name": "cityId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "isBatchActive": {
+          "name": "isBatchActive",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "isActive": {
+          "name": "isActive",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "regStartDate": {
+          "name": "regStartDate",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "regEndDate": {
+          "name": "regEndDate",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "batchEndDate": {
+          "name": "batchEndDate",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "isRestricted": {
+          "name": "isRestricted",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "isEntryTestMandatory": {
+          "name": "isEntryTestMandatory",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "batches_cityId_cities_city_id_fk": {
+          "name": "batches_cityId_cities_city_id_fk",
+          "tableFrom": "batches",
+          "tableTo": "cities",
+          "columnsFrom": [
+            "cityId"
+          ],
+          "columnsTo": [
+            "city_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {}
+    },
+    "centers": {
+      "name": "centers",
+      "schema": "",
+      "columns": {
+        "center_id": {
+          "name": "center_id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "center_name": {
+          "name": "center_name",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "campus": {
+          "name": "campus",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "city_id": {
+          "name": "city_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "location": {
+          "name": "location",
+          "type": "varchar(300)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_date": {
+          "name": "created_date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "centers_city_id_cities_city_id_fk": {
+          "name": "centers_city_id_cities_city_id_fk",
+          "tableFrom": "centers",
+          "tableTo": "cities",
+          "columnsFrom": [
+            "city_id"
+          ],
+          "columnsTo": [
+            "city_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {}
+    },
+    "cities": {
+      "name": "cities",
+      "schema": "",
+      "columns": {
+        "city_id": {
+          "name": "city_id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "city_name": {
+          "name": "city_name",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_date": {
+          "name": "created_date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {}
+    },
+    "courses": {
+      "name": "courses",
+      "schema": "",
+      "columns": {
+        "course_id": {
+          "name": "course_id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "course_name": {
+          "name": "course_name",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "inital": {
+          "name": "inital",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "long_description": {
+          "name": "long_description",
+          "type": "varchar(3000)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "short_description": {
+          "name": "short_description",
+          "type": "varchar(1500)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_on": {
+          "name": "created_on",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {}
+    },
+    "emailRecords": {
+      "name": "emailRecords",
+      "schema": "",
+      "columns": {
+        "emailRecordId": {
+          "name": "emailRecordId",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "studentId": {
+          "name": "studentId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "email": {
+          "name": "email",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "isEmailSent": {
+          "name": "isEmailSent",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "createdOn": {
+          "name": "createdOn",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "emailRecords_studentId_reg_students_student_id_fk": {
+          "name": "emailRecords_studentId_reg_students_student_id_fk",
+          "tableFrom": "emailRecords",
+          "tableTo": "reg_students",
+          "columnsFrom": [
+            "studentId"
+          ],
+          "columnsTo": [
+            "student_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {}
+    },
+    "entryTests": {
+      "name": "entryTests",
+      "schema": "",
+      "columns": {
+        "entryTestId": {
+          "name": "entryTestId",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "studentId": {
+          "name": "studentId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "batchId": {
+          "name": "batchId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "percentile": {
+          "name": "percentile",
+          "type": "numeric(2)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rank": {
+          "name": "rank",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "testDate": {
+          "name": "testDate",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "testPassed": {
+          "name": "testPassed",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "createdOn": {
+          "name": "createdOn",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "createdBy": {
+          "name": "createdBy",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updatedOn": {
+          "name": "updatedOn",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updatedBy": {
+          "name": "updatedBy",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "entryTests_studentId_reg_students_student_id_fk": {
+          "name": "entryTests_studentId_reg_students_student_id_fk",
+          "tableFrom": "entryTests",
+          "tableTo": "reg_students",
+          "columnsFrom": [
+            "studentId"
+          ],
+          "columnsTo": [
+            "student_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "entryTests_batchId_batches_batchId_fk": {
+          "name": "entryTests_batchId_batches_batchId_fk",
+          "tableFrom": "entryTests",
+          "tableTo": "batches",
+          "columnsFrom": [
+            "batchId"
+          ],
+          "columnsTo": [
+            "batchId"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {}
+    },
+    "quarters": {
+      "name": "quarters",
+      "schema": "",
+      "columns": {
+        "quarterId": {
+          "name": "quarterId",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "quarterName": {
+          "name": "quarterName",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "createdOn": {
+          "name": "createdOn",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {}
+    },
+    "reg_students": {
+      "name": "reg_students",
+      "schema": "",
+      "columns": {
+        "student_id": {
+          "name": "student_id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "full_name": {
+          "name": "full_name",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "dob": {
+          "name": "dob",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "gender": {
+          "name": "gender",
+          "type": "varchar(10)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "contact_no": {
+          "name": "contact_no",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "last_qualification": {
+          "name": "last_qualification",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "home_address": {
+          "name": "home_address",
+          "type": "varchar(500)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "image_url": {
+          "name": "image_url",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "city_id": {
+          "name": "city_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "distance_learning": {
+          "name": "distance_learning",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "roll_internal": {
+          "name": "roll_internal",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "roll_no": {
+          "name": "roll_no",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "status": {
+          "name": "status",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "reject_reason": {
+          "name": "reject_reason",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "signup_date": {
+          "name": "signup_date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "entry_test_result": {
+          "name": "entry_test_result",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "student_ref_id": {
+          "name": "student_ref_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "percentile": {
+          "name": "percentile",
+          "type": "numeric(3)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "rank": {
+          "name": "rank",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "on_site_allowed": {
+          "name": "on_site_allowed",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_new_user": {
+          "name": "is_new_user",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "have_laptop": {
+          "name": "have_laptop",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_profile_completed": {
+          "name": "is_profile_completed",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "phone_verification_token": {
+          "name": "phone_verification_token",
+          "type": "varchar(2000)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "phone_verified": {
+          "name": "phone_verified",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_document_uploaded": {
+          "name": "is_document_uploaded",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_date": {
+          "name": "created_date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_date": {
+          "name": "updated_date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "update_by": {
+          "name": "update_by",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "reg_students_user_id_users_user_id_fk": {
+          "name": "reg_students_user_id_users_user_id_fk",
+          "tableFrom": "reg_students",
+          "tableTo": "users",
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "user_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "reg_students_city_id_cities_city_id_fk": {
+          "name": "reg_students_city_id_cities_city_id_fk",
+          "tableFrom": "reg_students",
+          "tableTo": "cities",
+          "columnsFrom": [
+            "city_id"
+          ],
+          "columnsTo": [
+            "city_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {}
+    },
+    "roles": {
+      "name": "roles",
+      "schema": "",
+      "columns": {
+        "role_id": {
+          "name": "role_id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "role_name": {
+          "name": "role_name",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_date": {
+          "name": "created_date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {}
+    },
+    "statusLog": {
+      "name": "statusLog",
+      "schema": "",
+      "columns": {
+        "statusLogId": {
+          "name": "statusLogId",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "studentCourseId": {
+          "name": "studentCourseId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "status": {
+          "name": "status",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "statusDesc": {
+          "name": "statusDesc",
+          "type": "varchar(500)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "statusDate": {
+          "name": "statusDate",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "statusLog_studentCourseId_studentCourses_studentCourseId_fk": {
+          "name": "statusLog_studentCourseId_studentCourses_studentCourseId_fk",
+          "tableFrom": "statusLog",
+          "tableTo": "studentCourses",
+          "columnsFrom": [
+            "studentCourseId"
+          ],
+          "columnsTo": [
+            "studentCourseId"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {}
+    },
+    "studentCourses": {
+      "name": "studentCourses",
+      "schema": "",
+      "columns": {
+        "studentCourseId": {
+          "name": "studentCourseId",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "studentId": {
+          "name": "studentId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "batchCourseId": {
+          "name": "batchCourseId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "currentlyOnsite": {
+          "name": "currentlyOnsite",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "isGraduated": {
+          "name": "isGraduated",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "isActive": {
+          "name": "isActive",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "isDropout": {
+          "name": "isDropout",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "registrationDate": {
+          "name": "registrationDate",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "graduationDate": {
+          "name": "graduationDate",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "dropoutDate": {
+          "name": "dropoutDate",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "dropOutReason": {
+          "name": "dropOutReason",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "courseStatus": {
+          "name": "courseStatus",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "currentQtr": {
+          "name": "currentQtr",
+          "type": "varchar(20)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "completedQtrs": {
+          "name": "completedQtrs",
+          "type": "text[]",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "createdOn": {
+          "name": "createdOn",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "createdBy": {
+          "name": "createdBy",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updatedOn": {
+          "name": "updatedOn",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "updatedBy": {
+          "name": "updatedBy",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "studentCourses_studentId_reg_students_student_id_fk": {
+          "name": "studentCourses_studentId_reg_students_student_id_fk",
+          "tableFrom": "studentCourses",
+          "tableTo": "reg_students",
+          "columnsFrom": [
+            "studentId"
+          ],
+          "columnsTo": [
+            "student_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "studentCourses_batchCourseId_batchCourses_batchCourseId_fk": {
+          "name": "studentCourses_batchCourseId_batchCourses_batchCourseId_fk",
+          "tableFrom": "studentCourses",
+          "tableTo": "batchCourses",
+          "columnsFrom": [
+            "batchCourseId"
+          ],
+          "columnsTo": [
+            "batchCourseId"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {}
+    },
+    "student_documents": {
+      "name": "student_documents",
+      "schema": "",
+      "columns": {
+        "st_doc_id": {
+          "name": "st_doc_id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "document_name": {
+          "name": "document_name",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "document_url": {
+          "name": "document_url",
+          "type": "varchar(200)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {}
+    },
+    "timeSlots": {
+      "name": "timeSlots",
+      "schema": "",
+      "columns": {
+        "timeSlotId": {
+          "name": "timeSlotId",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "slotName": {
+          "name": "slotName",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "centerId": {
+          "name": "centerId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "batchQuarterId": {
+          "name": "batchQuarterId",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "location": {
+          "name": "location",
+          "type": "varchar(100)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "qtrFee": {
+          "name": "qtrFee",
+          "type": "numeric(2)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "slotYear": {
+          "name": "slotYear",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "slotMonth": {
+          "name": "slotMonth",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "slotDay": {
+          "name": "slotDay",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "slotStart": {
+          "name": "slotStart",
+          "type": "time",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "slotEnd": {
+          "name": "slotEnd",
+          "type": "time",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "totalSeats": {
+          "name": "totalSeats",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "bookedSeats": {
+          "name": "bookedSeats",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "confirmedSeats": {
+          "name": "confirmedSeats",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "createdOn": {
+          "name": "createdOn",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "timeSlots_centerId_centers_center_id_fk": {
+          "name": "timeSlots_centerId_centers_center_id_fk",
+          "tableFrom": "timeSlots",
+          "tableTo": "centers",
+          "columnsFrom": [
+            "centerId"
+          ],
+          "columnsTo": [
+            "center_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "timeSlots_batchQuarterId_batchQuarters_batchQuarterId_fk": {
+          "name": "timeSlots_batchQuarterId_batchQuarters_batchQuarterId_fk",
+          "tableFrom": "timeSlots",
+          "tableTo": "batchQuarters",
+          "columnsFrom": [
+            "batchQuarterId"
+          ],
+          "columnsTo": [
+            "batchQuarterId"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {}
+    },
+    "users": {
+      "name": "users",
+      "schema": "",
+      "columns": {
+        "user_id": {
+          "name": "user_id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "user_name": {
+          "name": "user_name",
+          "type": "varchar(500)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "cnic": {
+          "name": "cnic",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "password": {
+          "name": "password",
+          "type": "varchar(3000)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "email_verification_token": {
+          "name": "email_verification_token",
+          "type": "varchar(3000)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "email_verfied": {
+          "name": "email_verfied",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_active": {
+          "name": "is_active",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "role_id": {
+          "name": "role_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "status": {
+          "name": "status",
+          "type": "varchar(50)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "is_blocked": {
+          "name": "is_blocked",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "block_reason": {
+          "name": "block_reason",
+          "type": "varchar(1000)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_date": {
+          "name": "created_date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "updated_date": {
+          "name": "updated_date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "update_by": {
+          "name": "update_by",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "users_role_id_roles_role_id_fk": {
+          "name": "users_role_id_roles_role_id_fk",
+          "tableFrom": "users",
+          "tableTo": "roles",
+          "columnsFrom": [
+            "role_id"
+          ],
+          "columnsTo": [
+            "role_id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  }
+}
