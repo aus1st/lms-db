@@ -4,16 +4,16 @@ import { serial, varchar, timestamp, date, pgTable, integer, boolean, decimal, t
 
 
 export const roles = pgTable('roles', {
-    roleId: serial('role_id').primaryKey(),
-    roleName: varchar('role_name', {
+    roleId: serial('roleId').primaryKey(),
+    roleName: varchar('roleName', {
         length: 50
     }),
-    createdOn: timestamp('created_date').defaultNow()
+    createdOn: timestamp('createdOn').defaultNow()
 })
 
 export const users = pgTable('users', {
-    userId: serial('user_id').primaryKey(),
-    userName: varchar('user_name', {
+    userId: serial('userId').primaryKey(),
+    userName: varchar('userName', {
         length: 500
     }),
     cnic: varchar('cnic', {
@@ -22,125 +22,125 @@ export const users = pgTable('users', {
     password: varchar('password', {
         length: 3000
     }),
-    emailVerificationToken: varchar('email_verification_token', {
+    emailVerificationToken: varchar('emailVerificationToken', {
         length: 3000
     }),
-    emailVerified: boolean('email_verfied'),
-    isActive: boolean('is_active'),
+    emailVerified: boolean('emailVerified'),
+    isActive: boolean('isActive'),
 
     //currently setting user with role as user would have only one role (it could be one to many)
-    roleId: integer('role_id').references(() => roles.roleId),
+    roleId: integer('roleId').references(() => roles.roleId),
     status: varchar('status', {
         length: 50
     }),
-    isBlocked: boolean('is_blocked'),
-    blockReason: varchar('block_reason', {
+    isBlocked: boolean('isBlocked'),
+    blockReason: varchar('blockReason', {
         length: 1000
     }),
-    createdOn: timestamp('created_date').defaultNow(),
-    updatedOn: timestamp('updated_date'),
-    updatedBy: timestamp('update_by')
+    createdOn: timestamp('createdOn').defaultNow(),
+    updatedOn: timestamp('updatedOn'),
+    updatedBy: timestamp('updatedBy')
 
 });
 
 export const cities = pgTable('cities', {
-    cityId: serial('city_id').primaryKey(),
-    cityName: varchar('city_name', {
+    cityId: serial('cityId').primaryKey(),
+    cityName: varchar('cityName', {
         length: 200
     }).notNull(),
-    createdOn: timestamp('created_date').defaultNow()
+    createdOn: timestamp('createdOn').defaultNow()
 });
 
 
 
 
 export const centers = pgTable('centers', {
-    centerId: serial('center_id').primaryKey(),
-    centerName: varchar('center_name', {
+    centerId: serial('centerId').primaryKey(),
+    centerName: varchar('centerName', {
         length: 200
     }),
     campus: varchar('campus', {
         length: 200
     }),
-    cityId: integer('city_id').references(() => cities.cityId),
+    cityId: integer('cityId').references(() => cities.cityId),
     location: varchar('location', {
         length: 300
     }),
-    createdOn: timestamp('created_date').defaultNow()
+    createdOn: timestamp('createdOn').defaultNow()
 
 });
 
 
-export const regStudents = pgTable('reg_students', {
-    studentId: serial('student_id').primaryKey(),
-    user_id: integer('user_id').references(() => users.userId),
-    fullName: varchar('full_name', {
+export const regStudents = pgTable('regStudents', {
+    studentId: serial('studentId').primaryKey(),
+    userId: integer('userId').references(() => users.userId),
+    fullName: varchar('fullName', {
         length: 100,
     }),
     dob: date('dob'),
     gender: varchar('gender', {
         length: 10
     }),
-    contactNo: varchar('contact_no', {
+    contactNo: varchar('contactNo', {
         length: 50
     }),
-    lastQualification: varchar('last_qualification', {
+    lastQualification: varchar('lastQualification', {
         length: 50
     }),
-    homeAddress: varchar('home_address', {
+    homeAddress: varchar('homeAddress', {
         length: 500
     }),
-    imgUrl: varchar('image_url', {
+    imgUrl: varchar('imgUrl', {
         length: 200
     }),
-    cityId: integer('city_id').references(() => cities.cityId),
-    distanceLearning: boolean('distance_learning'),
-    roll_internal: varchar('roll_internal', {
+    cityId: integer('cityId').references(() => cities.cityId),
+    distanceLearning: boolean('distanceLearning'),
+    rollInternal: varchar('rollInternal', {
         length: 20
     }),
-    rollNo: varchar('roll_no', {
+    rollNo: varchar('rollNo', {
         length: 20
     }),
     status: varchar('status', {
         length: 20
     }),
-    rejectReason: varchar('reject_reason', {
+    rejectReason: varchar('rejectReason', {
         length: 200
     }),
-    signUpDate: date('signup_date'),
-    entryTestResult: varchar('entry_test_result', {
+    signUpDate: date('signUpDate'),
+    entryTestResult: varchar('entryTestResult', {
         length: 200
     }),
-    studentRefId: integer('student_ref_id'),
+    studentRefId: integer('studentRefId'),
     percentile: decimal('percentile', {
         precision: 3
     }),
     rank: integer('rank'),
-    onSiteAllowed: boolean('on_site_allowed'),
-    isNewUser: boolean('is_new_user'),
-    haveLaptop: boolean('have_laptop'),
-    isProfileCompleted: boolean('is_profile_completed'),
-    phoneVerificationToken: varchar('phone_verification_token', {
+    onSiteAllowed: boolean('onSiteAllowed'),
+    isNewUser: boolean('isNewUser'),
+    haveLaptop: boolean('haveLaptop'),
+    isProfileCompleted: boolean('isProfileCompleted'),
+    phoneVerificationToken: varchar('phoneVerificationToken', {
         length: 2000
     }),
-    phoneVerified: boolean('phone_verified'),
-    isDocumentUploaded: boolean('is_document_uploaded'),
-    createdOn: timestamp('created_date').defaultNow(),
-    updatedOn: timestamp('updated_date'),
-    updatedBy: timestamp('update_by')
+    phoneVerified: boolean('phoneVerified'),
+    isDocumentUploaded: boolean('isDocumentUploaded'),
+    createdOn: timestamp('createdOn').defaultNow(),
+    updatedOn: timestamp('updatedOn'),
+    updatedBy: timestamp('updatedBy')
 });
 
 export const studentRelation = relations(regStudents, ({ many }) => ({
     studentDocuments: many(studentDocuments)
 }));
 
-export const studentDocuments = pgTable('student_documents', {
-    stDocId: serial('st_doc_id').primaryKey(),
+export const studentDocuments = pgTable('studentDocuments', {
+    stDocId: serial('stDocId').primaryKey(),
     //studentId: number()
-    documentName: varchar('document_name', {
+    documentName: varchar('documentName', {
         length: 100
     }),
-    documentUrl: varchar('document_url', {
+    documentUrl: varchar('documentUrl', {
         length: 200
     })
 });
@@ -316,4 +316,109 @@ export const timeSlots = pgTable('timeSlots', {
     bookedSeats: integer('bookedSeats'),
     confirmedSeats: integer('confirmedSeats'),
     createdOn: timestamp('createdOn').defaultNow()
+})
+
+
+export const banks = pgTable('banks', {
+    bankId: serial('bankId').primaryKey(),
+    bankCode: varchar('bankCode', {
+        length: 5
+    }),
+    bankName: varchar('bankName', {
+        length: 100
+    }),
+    createdOn: timestamp('createdOn').defaultNow()
+})
+
+export const branches = pgTable('branches', {
+    branchId: serial('branchId').primaryKey(),
+    bankId: integer('bankId').references(() => banks.bankId),
+    cityId: integer('cityId').references(() => cities.cityId),
+    branchCode: varchar('branchCode', {
+        length: 5
+    }),
+    branchName: varchar('branchName', {
+        length: 100
+    }),
+    branchAddress: varchar('branchAddress', {
+        length: 500
+    }),
+    createdOn: timestamp('createdOn').defaultNow()
+})
+
+export const feeVouchers = pgTable('feeVouchers', {
+
+    feeVoucherId: serial('feeVoucherId').primaryKey(),
+    studentId: integer('studentId').references(() => regStudents.studentId),
+    feeVoucherNo: varchar('feeVoucherNo', {
+        length: 20,
+    }),
+    // batchCourseId: integer('batchCourseId').references(()=>batchCourses.batchCourseId),
+    batchQuarterId: integer('batchQuarterId').references(() => batchQuarters.batchQuarterId),
+    timeSlotId: integer('timeSlotId').references(() => timeSlots.timeSlotId),
+    distanceLearning: boolean('distanceLearning'),
+    isPaid: boolean('isPaid'),
+    imgUrl: varchar('imgUrl', {
+        length: 250,
+    }),
+    paymentDeadline: date('paymentDeadline'),
+    feeAmount: decimal('feeAmount', { precision: 2 }),
+    isValid: boolean('isValid'),
+    paymentId: integer('paymentId'),
+    paidDate: date('paidDate'),
+    branchId: integer('branchId').references(() => branches.branchId),
+    isAutoPaid: boolean('isAutoPaid'),
+    isPaymentDelayed: boolean('isPaymentDelayed'),
+    paymentDelayReason: varchar('paymentDelayReason', {
+        length: 500,
+    }),
+    createdOn: timestamp('createdOn').defaultNow(),
+    createdBy: integer('createdBy'),
+    updatedOn: timestamp('updatedOn'),
+    updatedBy: timestamp('updatedBy')
+})
+
+export const feeVouchersActivity = pgTable('feeVouchersActivity', {
+    voucherActivityId: serial('voucherActivityId').primaryKey(),
+    feeVoucherId: integer('feeVoucherId').references(() => feeVouchers.feeVoucherId),
+    stepNo: integer('stepNo'),
+    tableName: varchar('tableName', {
+        length: 500,
+    }),
+    errorDtls: varchar('errorDtls', {
+        length: 500,
+    }),
+    createdOn: timestamp('createdOn').defaultNow(),
+})
+
+
+export const announcements = pgTable('announcements', {
+    announcementId: serial('announcementId').primaryKey(),
+    title: varchar('title', {
+        length: 200,
+    }),
+    description: varchar('description', {
+        length: 2000,
+    }),
+    url: varchar('url', {
+        length: 500,
+    }),
+    createdOn: timestamp('createdOn').defaultNow(),
+    createdBy: integer('createdBy')
+})
+
+export const studentsQtrResult = pgTable('studentQtrResults', {
+    studentsQtrRsltId: serial('studentQtrRsltId').primaryKey(),
+    studentId: integer('studentId').references(() => regStudents.studentId),
+    batchQuarterId: integer('batchQuarterId').references(() => batchQuarters.batchQuarterId),
+    isPassed: boolean('isPassed'),
+    percentile: decimal('percentile', { precision: 2 }),
+    distanceLearning: boolean('distanceLearning').default(false),
+    grade: varchar('grade', { length: 5 }),
+    testsMissed: integer('testsMissed'),
+    rank: integer('rank'),
+    createdOn: timestamp('createdOn').defaultNow(),
+    createdBy: integer('createdBy'),
+    updatedOn: timestamp('updatedOn'),
+    updatedBy: timestamp('updatedBy')
 })
