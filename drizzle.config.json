@@ -1,0 +1,9 @@
+{
+    "out": "./drizzle",
+    "schema": "@/db/schema/*",
+    "breakpoints": false,
+    "driver": "pg",
+    "dbCredentials": {
+        "connectionString": "postgres://postgres:123@127.0.0.1:5432/LMS"
+    }
+}

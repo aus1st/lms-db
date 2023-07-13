@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "generate": "drizzle-kit generate:pg --out drizzle --schema src/app/db/schema/*",
-    "migrate": "node -r esbuild-register src/app/db/migrate.ts"
+    "migrate": "node -r esbuild-register src/app/db/migrate.ts",
+    "drop": "drizzle-kit drop --out=drizzle"
   },
   "dependencies": {
     "@types/node": "20.3.1",

@@ -43,6 +43,27 @@
       "when": 1688734518069,
       "tag": "0005_orange_captain_cross",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1689212456978,
+      "tag": "0006_skinny_orphan",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1689225146611,
+      "tag": "0007_greedy_speedball",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1689232136614,
+      "tag": "0008_sharp_the_order",
+      "breakpoints": true
     }
   ]
 }

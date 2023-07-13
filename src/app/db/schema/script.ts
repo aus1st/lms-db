@@ -151,6 +151,7 @@ export const studentCourses = pgTable('studentCourses', {
     studentId: integer('studentId').references(() => regStudents.studentId),
     batchCourseId: integer('batchCourseId').references(() => batchCourses.batchCourseId),
     currentlyOnsite: boolean('currentlyOnsite'),
+    batchQuarterId: integer('batchQuarterId').references(() => batchQuarters.batchQuarterId),
     isGraduated: boolean('isGraduated'),
     isActive: boolean('isActive'),
     isDropout: boolean('isDropout'),
@@ -225,20 +226,20 @@ export const batchConfig = pgTable('batchConfig', {
 
 
 export const courses = pgTable('courses', {
-    courseId: serial('course_id').primaryKey(),
-    courseName: varchar('course_name', {
+    courseId: serial('courseId').primaryKey(),
+    courseName: varchar('courseName', {
         length: 200
     }),
     inital: varchar('inital', {
         length: 200
     }),
-    longDescription: varchar('long_description', {
+    longDescription: varchar('longDescription', {
         length: 3000
     }),
-    shortDescription: varchar('short_description', {
+    shortDescription: varchar('shortDescription', {
         length: 1500
     }),
-    createdOn: date('created_on').defaultNow()
+    createdOn: date('createdOn').defaultNow()
 })
 
 
