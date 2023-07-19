@@ -142,7 +142,8 @@ export const studentDocuments = pgTable('studentDocuments', {
     }),
     documentUrl: varchar('documentUrl', {
         length: 200
-    })
+    }),
+    createdOn: timestamp('createdOn').defaultNow()
 });
 
 
@@ -208,7 +209,8 @@ export const batches = pgTable('batches', {
     regEndDate: date('regEndDate'),
     batchEndDate: date('batchEndDate'),
     isRestricted: boolean('isRestricted'),
-    isEntryTestMandatory: boolean('isEntryTestMandatory')
+    isEntryTestMandatory: boolean('isEntryTestMandatory'),
+    createdOn: timestamp('createdOn').defaultNow()
 })
 
 export const batchConfig = pgTable('batchConfig', {
@@ -221,7 +223,7 @@ export const batchConfig = pgTable('batchConfig', {
     }),
     attestationDate: date('attestationDate'),
     entryTestDate: date('entryTestDate'),
-    createdOn: date('createdOn').defaultNow()
+    createdOn: timestamp('createdOn').defaultNow(),
 })
 
 
@@ -239,7 +241,7 @@ export const courses = pgTable('courses', {
     shortDescription: varchar('shortDescription', {
         length: 1500
     }),
-    createdOn: date('createdOn').defaultNow()
+    createdOn: timestamp('createdOn').defaultNow(),
 })
 
 
